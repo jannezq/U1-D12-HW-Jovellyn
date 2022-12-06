@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -57,14 +58,15 @@
       <button onclick="addParagraph()">Add new Paragraph</button>
       <p class="child">This text is just for the exercise</p>
     </div>
-
-    <div>
+    <br><button onclick="changePcontent()">Change text of P</button>
+    <div id="divSpace2">
       <button id="btnColour" onclick="paintItGreen()">Add bg colour to UL!</button>
       <input type="text" id="input-field" placeholder="input field for the exercise" />
+      <p id="log"></p>
     </div>
   </div>
 
-  <div>
+  <div id="footer">
     <p onclick="changeFooterText()" id="footer-text">And this text is just for the exercise too!</p>
     <h2 style=" color: red">
       Save this page on your computer and open it with VSCode to get the
@@ -98,8 +100,8 @@
     */
 
     const changePcontent = function () {
-      let divElement = document.getElementById('divSpace');
-      let pTagChange = divElement.getElementsByClassName('child');
+
+      let pTagChange = document.getElementById('footer-text')
       pTagChange.innerText = "The p tag has been change due to the function that was used!";
       //
     };
@@ -231,6 +233,15 @@
     */
 
     const inputField = document.getElementById("input-field");
+    let logging = document.getElementById('log');
+
+    inputField.addEventListener('keyup', logKey);
+
+    function logKey(e) {
+      logging.textContent += `\n${e.code}`;
+    }
+
+
     // ...
 
     /* EXERCISE 12
