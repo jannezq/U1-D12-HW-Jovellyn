@@ -1,0 +1,251 @@
+<html>
+
+<head>
+  <style>
+    .myHeading {
+      color: red;
+    }
+
+    #divSpace1 {
+      border: 1px solid lightcoral;
+      margin: 2px;
+    }
+
+    h1:hover {
+      cursor: pointer;
+    }
+
+    #footer-text:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-container">
+    <h1 onclick="makeItClickable()" id="head-title">This is the title of the page</h1>
+    <h2>This is the subtitle of the page</h2>
+  </div>
+  <button onclick="changeTitle()">See title change here!</button><br>
+  <button onclick="addClassToTitle()"> Click to add myHeading class to Title!</button>
+
+  <div id="main-body-container">
+    <hr />
+
+    <button onclick="firstUlDisappear()">Remove this First List!</button>
+    <ul id="firstList">
+      <li>1st</li>
+      <li>2nd</li>
+      <li>3rd</li>
+    </ul>
+
+    <br></br>
+    <input id="input-second" type="text" placeholder="enter items to second list" />
+    <button onclick="addToTheSecond()">Add to Second List!</button>
+    <ul id="secondList">
+      <li>1st</li>
+      <li>2nd</li>
+      <li>3rd</li>
+    </ul>
+
+    <a href="strive.school">This link goes to Strive School</a>
+    <button onclick="changeUrls()"> Change link to Google!</button>
+    <br>
+    </br>
+    <div id="divSpace1">
+      <input id="inputPValue" type="text" placeholder="enter a paragraph" />
+      <button onclick="addParagraph()">Add new Paragraph</button>
+      <p class="child">This text is just for the exercise</p>
+    </div>
+
+    <div>
+      <button id="btnColour" onclick="paintItGreen()">Add bg colour to UL!</button>
+      <input type="text" id="input-field" placeholder="input field for the exercise" />
+    </div>
+  </div>
+
+  <div>
+    <p onclick="changeFooterText()" id="footer-text">And this text is just for the exercise too!</p>
+    <h2 style=" color: red">
+      Save this page on your computer and open it with VSCode to get the
+      questions!
+    </h2>
+  </div>
+
+
+  <script>
+    /* EXERCISE 1
+     Write a function for changing the title of the document in something else.
+    */
+
+    const changeTitle = function (newTitle) {
+      document.querySelector('h1').innerText = "Unit 1 Day 12 Homework- Changed Title!"
+
+      //
+    };
+
+    /* EXERCISE 2
+     Write a function for changing the class of the title of the page in "myHeading".
+    */
+
+    const addClassToTitle = function () {
+      document.getElementById('head-title').classList.add('myHeading');
+      //
+    };
+
+    /* EXERCISE 3
+     Write a function for changing the text of only the p which are children of a div.
+    */
+
+    const changePcontent = function () {
+      let divElement = document.getElementById('divSpace');
+      let pTagChange = divElement.getElementsByClassName('child');
+      pTagChange.innerText = "The p tag has been change due to the function that was used!";
+      //
+    };
+
+    /* EXERCISE 4
+     Write a function for changing the href property of every link to https://www.google.com
+    */
+
+    const changeUrls = function () {
+      let anchorTag = document.querySelector('a');
+      anchorTag.setAttribute('href', 'https://www.google.com');
+      //anchorTag.innerHTML('Google');
+
+      //
+    };
+
+    /* EXERCISE 5
+     Write a function for adding a new list item in the second unordered list.
+    */
+
+    const addToTheSecond = function (content) {
+      let inputValue = document.getElementById('input-second').value;
+      if (inputValue === "") {
+        alert("Must enter text in text field!");
+      }
+
+      let newItemInput = document.createElement('li')
+      newItemInput.classList.add('secondList')
+      newItemInput.innerText = inputValue
+      //newItemInput.onclick = onItemClick;
+
+      document.getElementById('secondList').appendChild(newItemInput)
+      document.getElementById('input-second').value = ""
+      // let inputValue = document.createElement('li');
+      // inputValue.appendChild(document)
+      // document.getElementsByClassName('secondList').appendChild(inputValue);
+      //
+    };
+
+    /* EXERCISE 6
+     Write a function for adding a second paragraph to the first div.
+    */
+
+    const addParagraph = function (content) {
+      let input = document.getElementById('inputPValue').value;
+
+      let newParaNode = document.createElement('p')
+      newParaNode.classList.add('divSpace1')
+      newParaNode.innerText = input
+
+      document.getElementById('divSpace1').appendChild(newParaNode)
+
+      //
+    };
+
+    /* EXERCISE 7
+     Write a function for making the first unordered list disappear.
+    */
+
+    const firstUlDisappear = function () {
+      let ulDelete = document.getElementById('firstList');
+      ulDelete.remove();
+      //
+    };
+
+    /* EXERCISE 8
+     Write a function for making the background of every unordered list green.
+    */
+
+    const paintItGreen = function () {
+
+      let btn = document.getElementById('btnColour')
+
+      btn.addEventListener('click', function onclick(event) {
+        let background = document.querySelector('ul')
+
+        background.style.backgroundColor = 'green'
+      });
+      //document.querySelector('ul').style.backgroundColor = 'green'
+
+
+      //
+    };
+
+    /* EXERCISE 9
+     Make the heading of the page change color every time the user clicks on it.
+    */
+    let startColour = 0;
+    const makeItClickable = function () {
+      let colourRange = [
+        'blue',
+        'green',
+        'pink',
+        'orange',
+        'yellow',
+        'red'
+      ]
+
+
+
+      document.querySelector('h1').addEventListener('click', function onclick() {
+        console.log(startColour);
+        if (startColour >= colourRange.length) startColour = 0;
+        this.style.color = colourRange[startColour];
+        startColour++
+      });
+
+      //
+    };
+
+    /* EXERCISE 10
+     Change the footer text with something else when the user clicks on it.
+    */
+
+    const changeFooterText = function () {
+      // let pNode = document.getElementById("address-site");
+      // pNode.innerText = newAddress;
+      //
+
+      let pChange = document.getElementById('footer-text');
+      pChange.addEventListener('click', function onclick() {
+        pChange.textContent = "You have changed this footers paragaph text! "
+      })
+
+    };
+
+    /* EXERCISE 11
+     Attach an event listener to the input field in the page for console logging its value just after any keystroke.
+    */
+
+    const inputField = document.getElementById("input-field");
+    // ...
+
+    /* EXERCISE 12
+     Create a welcome alert message when the page successfully loads.
+    */
+
+    window.onload = function () {
+      //alert("Page just finished Loading!");
+      //
+    };
+
+    /* EXERCISE 13
+     Use HTML5 tags to properly provide semantic meaning to the different portions of the page.
+    */
+  </script>
+</body>
+
+</html>
