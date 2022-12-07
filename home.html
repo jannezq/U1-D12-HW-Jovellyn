@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -6,21 +7,7 @@
     .myHeading {
       color: red;
     }
-
-    #divSpace1 {
-      border: 1px solid lightcoral;
-      margin: 2px;
-    }
-
-    h1:hover {
-      cursor: pointer;
-    }
-
-    #footer-text:hover {
-      cursor: pointer;
-    }
   </style>
-  <title>U1 Day 12 Homework - Jovellyn</title>
 </head>
 
 <body>
@@ -62,13 +49,10 @@
       questions!
     </h2>
   </div>
-
-
   <script>
     /* EXERCISE 1
      Write a function for changing the title of the document in something else.
     */
-
     let h1Node = document.querySelector('h1');
     const changeTitle = function (newTitle) {
 
@@ -76,6 +60,7 @@
       //
     };
 
+    changeTitle("Hello World!")
 
     /* EXERCISE 2
      Write a function for changing the class of the title of the page in "myHeading".
@@ -102,7 +87,6 @@
       //
     };
 
-
     /* EXERCISE 4
      Write a function for changing the href property of every link to https://www.google.com
     */
@@ -120,18 +104,12 @@
     */
 
     const addToTheSecond = function (content) {
-      let inputValue = document.getElementById('input-second').value;
-      if (inputValue === "") {
-        alert("Must enter text in text field!");
-      }
+      let addList = document.createElement('li')
+      addList.classList.add('secondList')
+      addList.innerText = content;
 
-      let newItemInput = document.createElement('li')
-      newItemInput.classList.add('secondList')
-      newItemInput.innerText = inputValue
-      //newItemInput.onclick = onItemClick;
-
-      document.getElementById('secondList').appendChild(newItemInput)
-      document.getElementById('input-second').value = ""
+      document.getElementById('secondList').appendChild(addList);
+      //
     };
 
     /* EXERCISE 6
@@ -139,14 +117,6 @@
     */
 
     const addParagraph = function (content) {
-      let input = document.getElementById('inputPValue').value;
-
-      let newParaNode = document.createElement('p')
-      newParaNode.classList.add('divSpace1')
-      newParaNode.innerText = input
-
-      document.getElementById('divSpace1').appendChild(newParaNode)
-
       //
     };
 
@@ -155,8 +125,6 @@
     */
 
     const firstUlDisappear = function () {
-      let ulDelete = document.getElementById('firstList');
-      ulDelete.remove();
       //
     };
 
@@ -165,43 +133,14 @@
     */
 
     const paintItGreen = function () {
-
-      let btn = document.getElementById('btnColour')
-
-      btn.addEventListener('click', function onclick(event) {
-        let background = document.querySelector('ul')
-
-        background.style.backgroundColor = 'green'
-      });
-      //document.querySelector('ul').style.backgroundColor = 'green'
-
-
       //
     };
 
     /* EXERCISE 9
      Make the heading of the page change color every time the user clicks on it.
     */
-    let startColour = 0;
+
     const makeItClickable = function () {
-      let colourRange = [
-        'blue',
-        'green',
-        'pink',
-        'orange',
-        'yellow',
-        'green'
-      ]
-
-
-
-      document.querySelector('h1').addEventListener('click', function (event) {
-        console.log(startColour);
-        if (startColour >= colourRange.length) startColour = 0;
-        this.style.color = colourRange[startColour];
-        startColour++
-      });
-
       //
     };
 
@@ -210,16 +149,7 @@
     */
 
     const changeFooterText = function () {
-      // let pNode = document.getElementById("address-site");
-      // pNode.innerText = newAddress;
       //
-
-      let pChange = document.getElementById('footer-text');
-      pChange.addEventListener('click', function (event) {
-        //pChange.textContent = "You have changed this footers paragaph text! "
-        event.target.innerText = "This should change the text"
-      })
-
     };
 
     /* EXERCISE 11
@@ -227,15 +157,6 @@
     */
 
     const inputField = document.getElementById("input-field");
-    let logging = document.getElementById('log');
-
-    inputField.addEventListener('keyup', logKey);
-
-    function logKey(e) {
-      logging.textContent += `\n${e.code}`;
-    }
-
-
     // ...
 
     /* EXERCISE 12
@@ -243,7 +164,6 @@
     */
 
     window.onload = function () {
-      alert("Page just finished Loading!");
       //
     };
 
